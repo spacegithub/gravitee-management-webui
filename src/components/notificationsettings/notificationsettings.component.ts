@@ -18,7 +18,7 @@ import {Hook} from '../../entities/hook';
 import {NotificationConfig} from '../../entities/notificationConfig';
 import NotificationSettingsService from '../../services/notificationSettings.service';
 import NotificationService from '../../services/notification.service';
-import {HookScope} from '../../entities/hookScope';
+import {Scope} from '../../entities/scope';
 import { StateService } from '@uirouter/core';
 
 const NotificationSettingsComponent: ng.IComponentOptions = {
@@ -143,13 +143,13 @@ const NotificationSettingsComponent: ng.IComponentOptions = {
         cfg.notifier = newConfig.notifierId;
         cfg.hooks = [];
         switch (vm.resolvedHookScope) {
-          case HookScope.APPLICATION:
+          case Scope.APPLICATION:
             cfg.referenceType = 'APPLICATION';
             break;
-          case HookScope.API:
+          case Scope.API:
             cfg.referenceType = 'API';
             break;
-          case HookScope.PORTAL:
+          case Scope.PORTAL:
             cfg.referenceType = 'PORTAL';
             break;
           default:

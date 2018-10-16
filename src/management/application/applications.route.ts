@@ -17,7 +17,7 @@ import ApplicationService from '../../services/applications.service';
 import GroupService from '../../services/group.service';
 import * as _ from 'lodash';
 import UserService from "../../services/user.service";
-import {HookScope} from "../../entities/hookScope";
+import {Scope} from "../../entities/scope";
 import NotificationSettingsService from "../../services/notificationSettings.service";
 import {StateParams} from '@uirouter/core';
 
@@ -279,20 +279,20 @@ function applicationsConfig($stateProvider) {
         }
       },
       resolve: {
-        resolvedHookScope: () => HookScope.APPLICATION,
+        resolvedHookScope: () => Scope.APPLICATION,
         resolvedHooks:
           (NotificationSettingsService: NotificationSettingsService) =>
-            NotificationSettingsService.getHooks(HookScope.APPLICATION).then( (response) =>
+            NotificationSettingsService.getHooks(Scope.APPLICATION).then( (response) =>
               response.data
             ),
         resolvedNotifiers:
           (NotificationSettingsService: NotificationSettingsService, $stateParams) =>
-            NotificationSettingsService.getNotifiers(HookScope.APPLICATION, $stateParams.applicationId).then( (response) =>
+            NotificationSettingsService.getNotifiers(Scope.APPLICATION, $stateParams.applicationId).then( (response) =>
               response.data
             ),
         resolvedNotificationSettings:
           (NotificationSettingsService: NotificationSettingsService, $stateParams) =>
-            NotificationSettingsService.getNotificationSettings(HookScope.APPLICATION, $stateParams.applicationId).then( (response) =>
+            NotificationSettingsService.getNotificationSettings(Scope.APPLICATION, $stateParams.applicationId).then( (response) =>
               response.data
             )
       }

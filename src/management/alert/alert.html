@@ -1,0 +1,56 @@
+<!--
+
+    Copyright (C) 2015 The Gravitee team (http://gravitee.io)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<div layout="row">
+  <div class="gv-sub-menu menu">
+    <div ng-if="$ctrl.api" class="md-headline">{{$ctrl.api.name}} ({{$ctrl.api.version}})</div>
+    <div class="aui-nav-heading">
+      <strong>Settings</strong>
+    </div>
+    <ul class="aui-nav">
+      <li class="iterable-item" ng-repeat="type in $ctrl.types"
+          ng-class="{'aui-nav-selected': type.id === $ctrl.selectedAlert.type}">
+        <a class="execute" ng-click="$ctrl.selectAlertByType(type)">{{type.label}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="gv-sub-content">
+    <div class="gv-forms" layout="column">
+      <h1>Alert settings on {{$ctrl.selectedAlertType.label}}</h1>
+      <form name="$ctrl.formAlert" ng-submit="$ctrl.save()" novalidate>
+        <div class="gv-form">
+          <h2>Settings</h2>
+          <div class="gv-form-content" layout="column">
+            <h5>{{$ctrl.selectedAlertType.description}}</h5>
+            <md-checkbox ng-model="$ctrl.selectedAlert.enabled" aria-label="Enable alert">
+              Enabled
+            </md-checkbox>
+            <div class="md-actions gravitee-api-save-button" layout="row">
+              <md-button class="md-raised"
+                         type="submit"
+                         permission permission-only="api-alert-u"
+                         ng-disabled="$ctrl.formAlert.$pristine">
+                Save
+              </md-button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

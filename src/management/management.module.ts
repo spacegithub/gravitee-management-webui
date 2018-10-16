@@ -422,6 +422,11 @@ import UpdateApiPortalHeaderDialogController
 import NewApiPortalHeaderDialogController
   from "./configuration/api-portal-header/new.api-portal-header.dialog.controller";
 
+// Alerts
+import apisAlertsRouterConfig from './api/alerts/apis.alerts.route';
+import AlertService from '../services/alert.service';
+import AlertComponent from './alert/alert.component';
+
 angular.module('gravitee-management', [uiRouter, permission, uiPermission, 'ngMaterial', 'ng-showdown',
   'ngMdIcons', 'ui.codemirror', 'md.data.table', 'ngCookies', 'dragularModule', 'readMore',
   'ngMessages', 'vAccordion', 'schemaForm', 'ngclipboard', 'ui.validate', 'angular-timeline',
@@ -449,6 +454,7 @@ angular.module('gravitee-management', [uiRouter, permission, uiPermission, 'ngMa
   .config(configurationRouterConfig)
   .config(interceptorConfig)
   .config(delegatorConfig)
+  .config(apisAlertsRouterConfig)
   .config(function ($mdThemingProvider: angular.material.IThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('blue');
@@ -570,6 +576,7 @@ angular.module('gravitee-management', [uiRouter, permission, uiPermission, 'ngMa
   .service('ChartService', ChartService)
   .service('TopApiService', TopApiService)
   .service('MessageService', MessageService)
+
   .directive('filecontent', () => DocumentationDirective)
   .directive('noDirtyCheck', () => new FormDirective())
   .directive('autofocus', () => new AutofocusDirective())
@@ -716,11 +723,15 @@ angular.module('gravitee-management', [uiRouter, permission, uiPermission, 'ngMa
   .controller('DictionaryController', DictionaryController)
   .controller('DialogDictionaryAddPropertyController', DialogDictionaryAddPropertyController)
 
-  //ApiHeader
+  // ApiHeader
   .component('configApiPortalHeader', ApiPortalHeaderComponent)
   .service('ApiHeaderService', ApiHeaderService)
   .controller("NewApiPortalHeaderDialogController", NewApiPortalHeaderDialogController)
   .controller("UpdateApiPortalHeaderDialogController", UpdateApiPortalHeaderDialogController)
+
+  // Alerts
+  .service('AlertService', AlertService)
+  .component('alertComponent', AlertComponent)
 
   .filter('humanDateFilter', function () {
     return function (input) {

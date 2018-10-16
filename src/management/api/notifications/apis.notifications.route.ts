@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import NotificationSettingsService from '../../../services/notificationSettings.service';
-import {HookScope} from '../../../entities/hookScope';
+import {Scope} from '../../../entities/scope';
 
 export default apisNotificationsRouterConfig;
 
@@ -37,20 +37,20 @@ function apisNotificationsRouterConfig($stateProvider) {
         }
       },
       resolve: {
-        resolvedHookScope: () => HookScope.API,
+        resolvedHookScope: () => Scope.API,
         resolvedHooks:
           (NotificationSettingsService: NotificationSettingsService) =>
-            NotificationSettingsService.getHooks(HookScope.API).then((response) =>
+            NotificationSettingsService.getHooks(Scope.API).then((response) =>
               response.data
             ),
         resolvedNotifiers:
           (NotificationSettingsService: NotificationSettingsService, $stateParams) =>
-            NotificationSettingsService.getNotifiers(HookScope.API, $stateParams.apiId).then((response) =>
+            NotificationSettingsService.getNotifiers(Scope.API, $stateParams.apiId).then((response) =>
               response.data
             ),
         resolvedNotificationSettings:
           (NotificationSettingsService: NotificationSettingsService, $stateParams) =>
-            NotificationSettingsService.getNotificationSettings(HookScope.API, $stateParams.apiId).then((response) =>
+            NotificationSettingsService.getNotificationSettings(Scope.API, $stateParams.apiId).then((response) =>
               response.data
             ),
         resolvedApi: function ($stateParams, ApiService) {
