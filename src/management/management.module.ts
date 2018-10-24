@@ -333,12 +333,14 @@ import NotificationSettingsComponent from '../components/notificationsettings/no
 import NotificationSettingsService from "../services/notificationSettings.service";
 
 // Documentation
-import PageComponent from '../components/documentation/page.component';
-import PageSwaggerComponent from '../components/documentation/page-swagger.component';
-import PageMarkdownComponent from '../components/documentation/page-markdown.component';
-import PageEditorMarkdownComponent from '../components/documentation/page-editormarkdown.component';
-import PageEditorMarkdownViewerComponent from '../components/documentation/page-editormarkdown-viewer.component';
-import PageSidenavDirective from '../components/documentation/page-sidenav.directive';
+import DocumentationManagementComponent
+  from '../components/documentation/management/documentation-management.component';
+import PageComponent from '../components/documentation/page/page.component';
+import PageSwaggerComponent from '../components/documentation/page/page-swagger.component';
+import PageMarkdownComponent from '../components/documentation/page/page-markdown.component';
+import PageEditorMarkdownComponent from '../components/documentation/page/page-editormarkdown.component';
+import PageEditorMarkdownViewerComponent from '../components/documentation/page/page-editormarkdown-viewer.component';
+import PageSidenavDirective from '../components/documentation/page/page-sidenav.directive';
 
 // Healthcheck
 import ApiHealthCheckConfigureController from '../management/api/proxy/backend/healthcheck/healthcheck-configure.controller';
@@ -663,6 +665,7 @@ angular.module('gravitee-management', [uiRouter, permission, uiPermission, 'ngMa
   .controller('DialogAddNotificationSettingsController', DialogAddNotificationSettingsController)
   .component('notificationSettingsComponent', NotificationSettingsComponent)
 
+  .component('documentationManagement', DocumentationManagementComponent)
   .component('gvPage', PageComponent)
   .component('gvPageMarkdown', PageMarkdownComponent)
   .component('gvPageEditorMarkdown', PageEditorMarkdownComponent)

@@ -204,6 +204,27 @@ function configurationRouterConfig($stateProvider) {
         }
       }
     })
+    .state('management.settings.documentation', {
+      url: '/pages2',
+      component: 'documentationManagement',
+      resolve: {
+        resolvedPages: (PortalPagesService: PortalPagesService) => PortalPagesService.list().then(response => response.data),
+        resolvedGroups: (GroupService: GroupService) => {
+          return GroupService.list().then(response => {
+            return response.data;
+          });
+        },
+      },
+      data: {
+        menu: null,
+        docs: {
+          page: 'management-configuration-portal-pages'
+        },
+        perms: {
+          only: ['portal-documentation-r']
+        }
+      }
+    })
     .state('management.settings.pages.new', {
       url: '/new?:type',
       template: require('./pages/page/page.html'),
